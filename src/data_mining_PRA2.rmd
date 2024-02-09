@@ -21,109 +21,9 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-******
-# Enunciado
-******
+# Ejercicio 1
 
-Como continuación del estudio iniciado en la Práctica 1, procedemos a **aplicar modelos analíticos, tanto no supervisados como supervisados**, sobre el juego de datos seleccionado y ya preparado. En esta **Práctica 2** tendréis que cargar los datos previamente preparados en la **Práctica 1**.
-
-**Punto común para todos los ejercicios**
-
-En todos los apartados de los ejercicios de esta práctica se pide al estudiante, además de aplicar los diferentes métodos, analizar correctamente el problema, **detallar de manera exhaustiva** resaltando el por qué del análisis y cómo se ha realizado, incluir elementos visuales, explicar los resultados y realizar las comparativas oportunas con sus conclusiones.
-
-En toda la práctica es **necesario documentar** cada apartado del ejercicio que se ha hecho, el por qué y como se ha realizado. Asimismo, todas las decisiones y conclusiones deberán ser presentados de forma razonada y clara, **contextualizando los resultados**, es decir, especificando todos y cada uno de los pasos que se hayan llevado a cabo para su resolución. 
-
-En definitiva, se pide al estudiante que complete los siguientes pasos con el juego de datos preparado en la Práctica 1:
-
-**Modelos no supervisados**
-
-1. Aplicar un modelo **no supervisado** basado en el concepto de distancia, sobre el juego de datos.
-
-2. Aplicar de nuevo el modelo anterior, pero usando una **métrica de distancia diferente** y comparar los resultados.
-
-3. Utilizar los algoritmos **DBSCAN y OPTICS**, probando con diferentes valores del parámetro `eps` y `minPts`, y comparar los resultados con los métodos anteriores.
-
-**Modelos supervisados**
-
-4. Seleccionar una muestra de entrenamiento y una de test utilizando las proporciones que se consideren más adecuadas en función de la disponibilidad de datos. Justificar dicha selección.
-
-5. Aplicar un modelo de generación de reglas a partir de **árboles de decisión** ajustando las diferentes opciones para su obtención. Obtener el árbol sin y con opciones de poda. Obtener la matriz de confusión. Finalmente, comparar los resultados.
-
-6. Aplicar un **modelo supervisado** diferente al del punto 5., se tiene que elegir entre los vistos en el material docente de la asignatura. Comparar el resultado con el modelo generado anteriormente.
-	
-7. Identificar eventuales **limitaciones** del dataset seleccionado y **analizar los riesgos** en el caso de utilizar el modelo para clasificar un nuevo caso.
-
-
-******
-# Criterios de evaluación
-******
-
-* Ejercicio 1 - 25%
-	- Se genera un modelo no supervisado.
-	- Se analizan, muestran y comentan las medidas de calidad del modelo generado.
-	- Se resumen las principales conclusiones.
-
-* Ejercicio 2 - 10%
-	- Se genera de nuevo el modelo no supervisado anterior, pero usando una métrica de distancia distinta.
-	- Se muestran y comentan las medidas de calidad del modelo generado.
-	- Adicionalmente, se comparan los dos modelos no supervisados con métricas de distancia diferentes.
-	- Se resumen las principales conclusiones.
-	
-* Ejercicio 3 - 10%
-	- Se aplican lo algoritmos DBSCAN y OPTICS de forma correcta.
-  - Se prueban, describen e interpretan los resultados con diferentes valores de eps y minPts.
-  - Se obtiene una medida de lo bueno que es el agrupamiento.
-  - Se comparan los resultados obtenidos con los modelos de los ejercicios 1 y 2.
-  - Se resumen las principales conclusiones.
-
-* Ejercicio 4 - 10%
-	- Se seleccionan las muestra de entrenamiento y test.
-	- Se justifican las proporciones seleccionadas.
-
-* Ejercicio 5 - 20%
-	- Se generan reglas y se determinan e interpretan las más significativas.
-	- Se extraen las reglas del modelo en formato texto y gráfico.
-	- Adicionalmente, se genera matriz de confusión para medir la capacidad predictiva del algoritmo, teniendo en cuenta las distintas métricas asociadas a dicha matriz (precisión, sensibilidad, especificidad...).
-	- Se comparan e interpretan los resultados (sin y con opciones de poda), explicando las ventajas e inconvenientes del modelo generado respecto a otro método de construcción.
-	- Se evalúa la tasa de error del árbol generado, la eficiencia en la clasificación (en las muestras de entrenamiento y test) y la comprensibilidad del resultado.
-	- Se resumen las principales conclusiones.
-
-* Ejercicio 6 - 15%
-	- Se prueba con una variación u otro enfoque algorítmico. 
-	- Se detalla, comenta y evalúa la calidad de la clasificación.
-	- Se comparan los resultados de manera exhaustiva con el método supervisado del ejercicio 5.
-
-* Ejercicio 7 - 10%
-  - Se identifica qué posibles limitaciones tienen los datos que has seleccionado para obtener conclusiones con los modelos (supervisado y no supervisado)
-  - Se identifican posibles riesgos del uso de los modelos (mínimo 300 palabras).
-  
-
-******
-# Recursos de programación
-******
-* Incluimos en este apartado una lista de recursos de programación para minería de datos donde podréis encontrar ejemplos, ideas e inspiración:
-
-  + [Espacio de recursos UOC para ciencia de datos](http://@datascience.recursos.uoc.edu/es/)
-  + [Buscador de código R](https://rseek.org/)  
-  + [Colección de cheatsheets en R](https://rstudio.com/resources/cheatsheets/)  
-  
-  
-******
-# Formato y fecha de entrega
-******
-
-El formato de entrega es: el output generado en formato **.html** con nombre **username_estudiante-PRA2**.
-
-La fecha límite de entrega es el 17/01/2024.
-
-
-******
-# RESPUESTAS
-******
-
-## Ejercicio 1
-
-### Se genera un modelo no supervisado.
+## Se genera un modelo no supervisado.
 
 En este análisis, utilizaremos *k-means* para identificar clústeres potenciales basándonos en la hora programada de salida (`CRS_DEP_TIME_CONTINUOUS`) y la duración programada del vuelo (`CRS_ELAPSED_TIME`).
 
@@ -210,7 +110,7 @@ A medida que incrementamos el valor de *k* (4-9), el algoritmo sigue fragmentand
 
 Fuente: https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html
 
-### Se analizan, muestran y comentan las medidas de calidad del modelo generado.
+## Se analizan, muestran y comentan las medidas de calidad del modelo generado.
 
 Para evaluar la calidad del modelo, utilizamos la silueta media así como la SSW (*Sum of Squares Within*).
 
@@ -248,7 +148,7 @@ plot(2:10, kmeans_ssw_results[2:10], type = "o", col = "steelblue", pch = 19,
 
 El pico más alto de silueta se observa con *k* = 3 (0.43). En el gráfico de SSW (*Sum of Squares Within*), aunque no hay un codo claramente definido, la curva comienza a estabilizarse alrededor de *k* = 3.
 
-### Se comentan las conclusiones.
+## Se comentan las conclusiones.
 
 Si tuviéramos que decidir el mejor valor de *k*, sería 3. Esta elección se alinea con los resultados de la silueta y SSW, así como con lo que percibimos visualmente en los gráficos.
 
@@ -256,9 +156,9 @@ Aunque *k-means* ha sido eficaz en segmentar el bloque principal de vuelos segú
 
 ***
 
-## Ejercicio 2
+# Ejercicio 2
 
-### Se genera de nuevo el modelo no supervisado anterior, pero usando una métrica de distancia distinta.
+## Se genera de nuevo el modelo no supervisado anterior, pero usando una métrica de distancia distinta.
 
 A continuación, aplicamos el algoritmo *k-medians* de la librería `flexclust`, que emplea la distancia Manhattan.
 
@@ -298,7 +198,7 @@ De manera similar a lo anterior, con *k* = 2, el algoritmo distingue los vuelos 
 
 Fuente: https://stackoverflow.com/questions/7524042/how-to-specify-distance-metric-while-for-kmeans-in-r
 
-### Se muestran y comentan las medidas de calidad del modelo generado.
+## Se muestran y comentan las medidas de calidad del modelo generado.
 
 La librería `flexclust` no cuenta con una función específica para calcular los SSW (*Sum of Squares Within*). Sin embargo, sí es posible calcular la silueta media.
 
@@ -318,7 +218,7 @@ plot(2:10, kmedians_sil_results[2:10], type="o", col="steelblue", pch=19,
 
 En contraste con *k-means*, en este caso la silueta media más alta (0.38) se obtiene con *k* = 2. No obstante, estos dos grupos se dividen principalmente en la hora de salida. Si resulta relevante segmentar los vuelos en función de su duración, una buena alternativa podría ser *k* = 6, que tiene una silueta media de 0.35.
 
-### Adicionalmente se comparan los dos modelos no supervisados con métricas de distancia distintas.
+## Se comparan los dos modelos no supervisados con métricas de distancia distintas.
 
 A continuación, creamos un gráfico para comparar las siluetas obtenidas con cada algoritmo.
 
@@ -343,7 +243,7 @@ Podemos apreciar que los algoritmos *k-means* y *k-medians* muestran un desempe�
 
 En términos globales, el valor más alto alcanzado fue 0.43, utilizando *k-means* con *k* = 3. De manera sorprendente, el algoritmo *k-medians* experimentó su peor rendimiento con este mismo valor de *k*, alcanzando solo 0.26.
 
-### Se comentan las conclusiones.
+## Se comentan las conclusiones.
 
 En los gráficos, es evidente que los dos algoritmos generan formas de clústeres bastante distintas. *k-means*, al utilizar la distancia euclidiana, tiende a formar clústeres más esféricos. Por otro lado, *k-medians*, que se basa en la distancia de Manhattan, da lugar a clústeres con formas más angulares.
 
@@ -351,9 +251,9 @@ A pesar de que *k-means* ha logrado una silueta media más elevada en comparaci�
 	
 *** 
 
-## Ejercicio 3
+# Ejercicio 3
 
-### Se aplican lo algoritmos DBSCAN y OPTICS de forma correcta.
+## Se aplican los algoritmos DBSCAN y OPTICS de forma correcta.
 
 Para comenzar, cargamos la librería `dbscan` y aplicamos `optics()` con sus parámetros predeterminados (`eps = NULL`, `minPts = 5`).
 
@@ -390,7 +290,7 @@ hullplot(sampled_data, minPts5_eps0_4)
 
 Observamos que `DBSCAN` ha logrado diferenciar con bastante precisión los dos clústeres. Sin embargo, los vuelos más largos, aquellos que van desde el territorio continental de EE.UU. a Hawái, se han clasificado como ruido.
  
-### Se prueban, describen e interpretan los resultados con diferentes valores de `eps` y `minPts`.
+## Se prueban, describen e interpretan los resultados con diferentes valores de `eps` y `minPts`.
 
 Primero, incrementamos `eps_cl` ligeramente, de 0.4 a 0.47.
 
@@ -455,7 +355,7 @@ El resultado es similar a una muñeca rusa. El clúster más grande (en azul osc
 
 Finalmente, hay una concentración muy alta de vuelos cortos entre las 5:00 y las 10:00 de la mañana (en colores lila y azul claro), y otra de vuelos de duración intermedia entre las 12:00 y las 14:00 aproximadamente (en amarillo).
 
-### Se obtiene una medida de lo bueno que es el agrupamiento.
+## Se obtiene una medida de lo bueno que es el agrupamiento.
 
 Para evaluar la calidad de agrupamiento, calculamos la silueta media del segundo modelo (`minPts = 5`, `eps_cl = 0.47`).
 
@@ -476,7 +376,7 @@ optics_sil_result <- mean(positive_sil_values)
 optics_sil_result
 ```
 
-### Se comparan los resultados obtenidos de los modelos anteriores y DBSCAN.
+## Se comparan los resultados obtenidos de los modelos anteriores y DBSCAN.
 
 Para esta comparación, seleccionamos la mayor silueta media obtenida de los algoritmos *k-means* y *k-medians* (con *k* = 3 y *k* = 2, respectivamente).
 
@@ -498,7 +398,7 @@ ggplot(sil_results, aes(x = Algoritmo, y = Silueta, fill = Algoritmo)) +
 
 Observamos que la silueta media obtenida con *DBSCAN* (0.45) ha superado ligeramente a la obtenida con *k-means* (0.43), lo que indica que *DBSCAN* ajusta mejor a los datos.
 
-### Se comentan las conclusiones.
+## Se comentan las conclusiones.
 
 Mientras *k-means* y *k-medians* no lograron identificar el grupo de vuelos nocturnos como un clúster independiente, *DBSCAN* lo hizo fácilmente, incluso con su valor por defecto de `minPts`. Aunque fue necesario elegir el valor adecuado para `eps_cl`, este proceso resultó bastante intuitivo al apoyarnos en el *reachability plot* para identificar los «valles», que corresponden a los clústeres.
 
@@ -506,9 +406,9 @@ Este análisis destaca que los algoritmos *k-means* y *k-medians* son efectivos 
 
 ***
 
-## Ejercicio 4
+# Ejercicio 4
 
-### Se seleccionan las muestras de entrenamiento y test.
+## Se seleccionan las muestras de entrenamiento y test.
 
 Para este análisis, utilizaremos las siguientes variables explicativas:
 
@@ -595,7 +495,7 @@ prop.table(table((train$ARR_DEL15)))
 prop.table(table((test$ARR_DEL15)))
 ```
 
-### Se justifican las proporciones seleccionadas.
+## Se justifican las proporciones seleccionadas.
 
 Dada la cantidad de observaciones en nuestro conjunto de datos (560887 vuelos), contamos con una mayor flexibilidad en cuanto a la elección de proporciones. No obstante, es importante reconocer que cada decisión conlleva sus propias ventajas y desventajas.
 
@@ -608,9 +508,9 @@ Fuente 2: https://es.wikipedia.org/wiki/Principio_de_Pareto
 
 *** 
 
-## Ejercicio 5
+# Ejercicio 5
 
-### Se generan reglas y se seleccionan e interpretan las más significativas.
+## Se generan reglas y se seleccionan e interpretan las más significativas.
 
 A continuación, creamos un árbol de decisión con `C5.0`.
 
@@ -652,7 +552,7 @@ Las 14 reglas generadas por el modelo C5.0 pueden interpretarse de la siguiente 
 
 En resumen, los vuelos que salen temprano (antes de las 11:14 de la mañana) presentan las mejores probabilidades de llegar a tiempo. Por otro lado, las condiciones más desfavorables se observan en los vuelos operados por JetBlue, sobre todo los que salen los lunes, jueves, viernes y domingos, desde MCO (Orlando) a SLC (Salt Lake City).
 
-### Se extraen las reglas del modelo en formato texto y gráfico.
+## Se extraen las reglas del modelo en formato texto y gráfico.
 
 Dado el elevado número de reglas generadas y el formato de los gráficos en los modelos C5.0, no fue posible mostrar todas las reglas en un único gráfico, incluso aumentando las dimensiones de `fig.height` y `fig.width` a 150. Por ello, optamos por crear un modelo complementario utilizando `CART`.
 
@@ -686,7 +586,7 @@ Observamos que muchas reglas son similares. Por ejemplo, el primer nodo del mode
 
 Además, ambos modelos coinciden en que los vuelos de JetBlue tienen una mayor probabilidad de retraso. La hoja más desfavorable en el modelo CART (con un 60 % de probabilidad de retraso) corresponde a vuelos operados por JetBlue, los lunes, jueves, viernes y domingos, que parten después de las 13:10 desde ciertos aeropuertos (ABQ, ACY, ALB...) con destino a otros específicos (ACK, ALB, AUS...).
 
-### Adicionalmente, se genera la matriz de confusión para medir la capacidad predictiva del algoritmo, teniendo en cuenta las distintas métricas asociadas a dicha matriz (precisión, sensibilidad, especificidad...).
+## Se genera la matriz de confusión para medir la capacidad predictiva del algoritmo, teniendo en cuenta las distintas métricas asociadas a dicha matriz (precisión, sensibilidad, especificidad...).
 
 Primero, evaluamos la capacidad predictiva del modelo C5.0.
 
@@ -857,7 +757,7 @@ Bajo estas condiciones, el recall del modelo CART alcanza solo un 3.42 %, en con
 Fuente 1: https://cran.r-project.org/web/packages/PRROC/vignettes/PRROC.pdf  
 Fuente 2: https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-imbalanced-classification/
 
-### Se comparan e interpretan los resultados (sin y con opciones de poda), explicando las ventajas e inconvenientes del modelo generado respecto a otro método de construcción.
+## Se comparan e interpretan los resultados (sin y con opciones de poda), explicando las ventajas e inconvenientes del modelo generado respecto a otro método de construcción.
 
 Por defecto, el modelo C5.0 utiliza la poda, pero se puede deshabilitar con el argumento `noGlobalPruning = TRUE`.
 
@@ -979,7 +879,7 @@ Una de las ventajas de los árboles de decisión es su facilidad de visualizaci�
 
 Entre sus inconvenientes, los árboles de decisión son más propensos al sobreajuste (*overfitting*), aunque este riesgo puede mitigarse ligeramente a través de parámetros como `cp` en los modelos CART. Otra desventaja es que suelen presentar un rendimiento predictivo inferior en comparación con otros algoritmos más complejos.
 
-### Se evalúa la tasa de error en cada nivel de árbol, la eficiencia en la clasificación (en las muestras de entrenamiento y test) y la comprensibilidad del resultado.
+## Se evalúa la tasa de error en cada nivel de árbol, la eficiencia en la clasificación (en las muestras de entrenamiento y test) y la comprensibilidad del resultado.
 
 *Nota: Este apartado se centra en el modelo CART con 6 nodos.*
 
@@ -1118,7 +1018,7 @@ En cuanto a la comprensibilidad del resultado, para los modelos C5.0 con poda y 
 
 Además, las reglas son coherentes con los patrones observados en el análisis exploratorio realizado en la primera parte de la práctica. Por ejemplo, en la PR1, notamos que el porcentaje de vuelos retrasados tiende a incrementarse a lo largo del día, lo cual concuerda con la primera regla de cada modelo.
 
-### Se comentan las conclusiones.
+## Se comentan las conclusiones.
 
 Los AUC de todos los modelos mostraron una capacidad predictiva superior a la del azar, siendo de 18.64 %, pero esta capacidad era limitada. Al imponer un requisito de precisión mínima del 50 %, ninguno de los modelos logró detectar más del 10 % de los casos positivos.
 
@@ -1128,9 +1028,9 @@ De tener que recomendar un único modelo entre los cuatro analizados, elegiríam
 
 *** 
 
-## Ejercicio 6
+# Ejercicio 6
 
-### Se prueba con una variación u otro enfoque algorítmico.
+## Se prueba con una variación u otro enfoque algorítmico.
 
 A continuación, creamos un modelo *Random Forest*.
 
@@ -1239,7 +1139,7 @@ En el gráfico, se observa cómo la hora programada de llegada influye en las de
 
 *Nota: Me habría gustado presentar un gráfico para todas las 7 variables, pero el código tarda demasiado en ejecutarse (10 minutos para un solo gráfico).*
 
-### Se detalla, comenta y evalúa la calidad de clasificación.
+## Se detalla, comenta y evalúa la calidad de clasificación.
 
 Para el conjunto `train`, podemos ver la matriz de confusión directamente en la salida del modelo.
 
@@ -1280,7 +1180,7 @@ find_best_recall(rf_model_pr$curve, min_precision = 0.50)
 
 Lamentablemente, el modelo *Random Forest* solo logra un recall del 1.77 % en este caso.
 
-### Se comparan los resultados de manera exhaustiva con el método supervisado del ejercicio 5.
+## Se comparan los resultados de manera exhaustiva con el método supervisado del ejercicio 5.
 
 Empezamos con una evaluación general de los valores AUC de los distintos modelos.
 
@@ -1338,9 +1238,9 @@ Es crucial señalar que ninguno de los modelos logró un recall superior al 10 %
 
 *** 
 
-## Ejercicio 7
+# Ejercicio 7
 
-### Se identifica qué posibles limitaciones tienen los datos que has seleccionado para obtener conclusiones con los modelos (supervisado y no supervisado)
+## Se identifica qué posibles limitaciones tienen los datos que has seleccionado para obtener conclusiones con los modelos (supervisado y no supervisado)
 
 Hemos obtenido nuestro conjunto de datos del Bureau of Transportation Statistics del Departamento de Transporte de Estados Unidos, una fuente reconocida por su alta fiabilidad. Los datos, en su mayoría, eran muy limpios. Sin embargo, una limitación importante es que el conjunto de datos solo incluye vuelos con origen y destino dentro de Estados Unidos. Esto significa que los modelos derivados no serían aplicables a vuelos internacionales o en otros países. Adicionalmente, debido a restricciones de hardware, nuestro análisis se centró únicamente en los vuelos del último mes disponible, septiembre de 2023. A pesar de limitarnos a un solo mes, contábamos con una considerable cantidad de observaciones: 569,338 vuelos.
 
@@ -1348,7 +1248,7 @@ En cuanto a los modelos no supervisados, optamos por seleccionar una muestra ale
 
 Para los modelos supervisados, hay que considerar que podrían existir factores temporales que influyeran en las conclusiones. Un ejemplo claro se observó con los vuelos de JetBlue, los cuales mostraban una mayor probabilidad de retraso. Este patrón podría deberse a problemas específicos de la aerolínea durante septiembre que ya han sido resueltos. Para aumentar la generalización de los modelos, sería ideal incluir datos de un periodo más extenso. Además, el modelo *Random Forest* requirió una reducción en el número de categorías (aeropuertos) de 340 a 53, lo que podría introducir un sesgo hacia los aeropuertos más grandes.
 
-### Se identifican posibles riesgos del uso del modelo (mínimo 300 palabras).
+## Se identifican posibles riesgos del uso del modelo.
 
 El riesgo de generalización inadecuada es significativo, ya que los modelos se basan en datos de vuelos domésticos en Estados Unidos durante un mes específico. Esta limitación podría afectar su eficacia en otros contextos, como vuelos internacionales o diferentes épocas del año, donde los patrones de retraso varían por estaciones, diferencias regionales o eventos particulares.
 
