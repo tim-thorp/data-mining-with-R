@@ -25,7 +25,7 @@ La segunda mitad del proyecto (PRA2) incluye lo siguiente:
   - OPTICS y DBSCAN
 - Modelos supervisados
   - Algoritmos de árboles de decisión: C5.0 y CART
-  - Método de ensamble: Bosque Aleatorio
+  - Método de ensamble: *Random Forest*
 - Evaluación y comparación del rendimiento de los modelos
   - Matriz de confusión
   - Curva PR
