@@ -189,8 +189,8 @@ ggplot(flightData, aes(x = FL_DATE)) +
   
 El gráfico revela una variación en el número de vuelos a lo largo del mes. Notamos una disminución en la cantidad de vuelos en ciertas fechas: los días 2, 9, 16, 23 y 30 de septiembre. Todas estas fechas corresponden a sábados.
 
-```{r percent-delays-by-day-of-week}
-suppressPackageStartupMessages(library(dplyr))
+```{r percent-delays-by-day-of-week, message=FALSE, warning=FALSE}
+library(dplyr)
 
 percentage_delays <- flightData %>%
   group_by(DAY_OF_WEEK) %>%
@@ -455,8 +455,8 @@ plot(2:10, resultados[2:10], type = "o", col = "steelblue", pch = 19,
 
 Tras analizar diferentes números de clústeres, determinamos que el óptimo parece estar entre 4 y 5, ya que es en este punto donde la curva comienza a estabilizarse.
 
-```{r}
-suppressPackageStartupMessages(library(arules))
+```{r message=FALSE, warning=FALSE}
+library(arules)
 
 set.seed(123)
 flightData$CRS_ELAPSED_TIME_DISCRETE <- discretize(flightData$CRS_ELAPSED_TIME,
@@ -554,8 +554,8 @@ En cuanto a las categóricas, seleccionamos solo las aerolíneas (`OP_UNIQUE_CAR
 
 El conjunto final para SVD incluye estas 25 variables (numéricas y categóricas). Utilizamos `fastDummies` para las variables dummy y `scale` para las numéricas. Combinamos estos datos y aplicamos SVD, buscando descubrir patrones y relaciones significativas en los datos de vuelo.
 
-```{r}
-suppressPackageStartupMessages(library(fastDummies))
+```{r message=FALSE, warning=FALSE}
+library(fastDummies)
 
 # Transformamos las columnas categóricas en variables dummy y eliminamos las columnas originales
 dummy_data <- flightData %>%
@@ -634,6 +634,12 @@ corrplot(V_matrix, is.cor=FALSE, tl.cex=0.6, tl.srt=0, tl.offset=1, tl.col="blac
 
 Algunas variables dummy, correspondientes a *Allegiant Air* y *Hawaiian Airlines*, no tienen representación directa hasta el componente 23. Aunque representan una proporción pequeña del total, es posible que nuestro modelo sea sesgado hacia las aerolíneas con mayor número de vuelos.
 
+A continuación, exportamos el fichero CSV con los datos limpios.
+
+```{r}
+write.csv(flightData, '../data/flightData_clean.csv', row.names = FALSE)
+```
+
 ******
 # Conclusiones
 ******
@@ -677,7 +683,3 @@ Montoliu Colás, R. (2023). *Preprocesado de datos.* Universitat Oberta de Catal
 Peng, R. D. (2023). *Dimension Reduction. En Exploratory Data Analysis.* Recuperado de https://bookdown.org/rdpeng/exdata/dimension-reduction.html
 
 R Core Team. (2023). *Documentación sobre SVD.* Recuperado de https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/svd
-
-```{r}
-write.csv(flightData, '../data/flightData_clean.csv', row.names = FALSE)
-```

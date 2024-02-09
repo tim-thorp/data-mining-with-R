@@ -736,7 +736,7 @@ ggplot(flightData, aes(x = FL_DATE)) +
 mes. Notamos una disminución en la cantidad de vuelos en ciertas fechas:
 los días 2, 9, 16, 23 y 30 de septiembre. Todas estas fechas
 corresponden a sábados.</p>
-<pre class="r"><code>suppressPackageStartupMessages(library(dplyr))
+<pre class="r"><code>library(dplyr)
 
 percentage_delays &lt;- flightData %&gt;%
   group_by(DAY_OF_WEEK) %&gt;%
@@ -1061,7 +1061,7 @@ plot(2:10, resultados[2:10], type = &quot;o&quot;, col = &quot;steelblue&quot;, 
 <p>Tras analizar diferentes números de clústeres, determinamos que el
 óptimo parece estar entre 4 y 5, ya que es en este punto donde la curva
 comienza a estabilizarse.</p>
-<pre class="r"><code>suppressPackageStartupMessages(library(arules))
+<pre class="r"><code>library(arules)
 
 set.seed(123)
 flightData$CRS_ELAPSED_TIME_DISCRETE &lt;- discretize(flightData$CRS_ELAPSED_TIME,
@@ -1215,7 +1215,7 @@ categóricas). Utilizamos <code>fastDummies</code> para las variables
 dummy y <code>scale</code> para las numéricas. Combinamos estos datos y
 aplicamos SVD, buscando descubrir patrones y relaciones significativas
 en los datos de vuelo.</p>
-<pre class="r"><code>suppressPackageStartupMessages(library(fastDummies))
+<pre class="r"><code>library(fastDummies)
 
 # Transformamos las columnas categóricas en variables dummy y eliminamos las columnas originales
 dummy_data &lt;- flightData %&gt;%
@@ -1342,6 +1342,8 @@ aerolíneas.</p></li>
 componente 23. Aunque representan una proporción pequeña del total, es
 posible que nuestro modelo sea sesgado hacia las aerolíneas con mayor
 número de vuelos.</p>
+<p>A continuación, exportamos el fichero CSV con los datos limpios.</p>
+<pre class="r"><code>write.csv(flightData, &#39;../data/flightData_clean.csv&#39;, row.names = FALSE)</code></pre>
 <hr />
 </div>
 </div>
@@ -1410,7 +1412,6 @@ Universitat Oberta de Catalunya.</p>
 Analysis.</em> Recuperado de <a href="https://bookdown.org/rdpeng/exdata/dimension-reduction.html" class="uri">https://bookdown.org/rdpeng/exdata/dimension-reduction.html</a></p>
 <p>R Core Team. (2023). <em>Documentación sobre SVD.</em> Recuperado de
 <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/svd" class="uri">https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/svd</a></p>
-<pre class="r"><code>write.csv(flightData, &#39;../data/flightData_clean.csv&#39;, row.names = FALSE)</code></pre>
 </div>
 
 
