@@ -14,7 +14,7 @@ La primera mitad del proyecto (PRA1) incluye lo siguiente:
 - Análisis exploratorio
 - Discretización de atributos
 - Transformación de atributos
-- Análisis de correlación
+- Análisis de correlaciones
 - Descomposición en Valores Singulares (SVD)
 
 La segunda mitad del proyecto (PRA2) incluye lo siguiente:
