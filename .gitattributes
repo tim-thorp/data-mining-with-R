@@ -1,1 +1,2 @@
 *.rmd linguist-detectable
+src/UOC_header.html linguist-documentation
